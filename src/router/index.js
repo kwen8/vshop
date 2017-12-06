@@ -1,15 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-
+import routes from './router'
+import Store from '../store/'
+import jwt from '../helpers/jwt'
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+export const router = new Router({
+  routes
+})
+
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  if (to.name !== 'login') {
+    if (Store.state.user.authenticated === true || jwt.getToken()) {
+      return next()
+    } else {
+      return next({ name: 'login' })
     }
-  ]
+  } else {
+    next()
+  }
 })
