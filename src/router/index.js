@@ -12,13 +12,13 @@ export const router = new Router({
 router.beforeEach((to, from, next) => {
   if (to.name !== 'login') {
     if (Store.state.user.authenticated === true || jwt.getToken()) {
-      return next()
+      next()
     } else {
-      return next({ name: 'login' })
+      next({ name: 'login' })
     }
   } else {
-    if (Store.state.user.authenticated === true || jwt.getToken()) {
-      return next({ name: 'home' })
+    if (Store.state.user.authenticated === true && jwt.getToken()) {
+      next({ name: 'home' })
     } else {
       next()
     }

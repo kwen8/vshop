@@ -8,7 +8,7 @@
     :text-color="textColor"
     :active-text-color="activeTextColor"
     :collapse="collapse"
-    router="true">
+    router>
     <el-submenu index="1">
       <template slot="title">
         <i class="el-icon-location"></i>

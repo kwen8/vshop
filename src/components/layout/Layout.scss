@@ -7,7 +7,7 @@
     width: 100%;
     position: fixed;
     &-title {
-      transition: width .3s linear;
+      transition: width .3s ease-in-out;
       box-sizing: content-box;
       height: 60px;
       line-height: 60px;
@@ -21,6 +21,27 @@
       width: 15px;
       padding-right: 20px;
       line-height: 60px;
+    }
+    &-user {
+      text-align: right;
+      padding-right: 35px;
+      float: right;
+      .user-inner {
+        height: 60px;
+        line-height: 60px;
+        cursor: pointer;
+        display: block;
+        .user-name {
+          float: left;
+          margin-right: 15px;
+        }
+        img {
+          vertical-align: middle;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
     }
   }
   &-side {
