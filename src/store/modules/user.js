@@ -10,6 +10,10 @@ export default {
     [types.GET_USER_INFO] (state, { name }) {
       state.authenticated = true
       state.name = name
+    },
+    [types.UNSET_USER_INFO] (state) {
+      state.authenticated = false
+      state.name = ''
     }
   },
   actions: {
@@ -22,10 +26,20 @@ export default {
         return dispatch('getUserInfo')
       })
     },
+    logout ({ dispatch }) {
+      return dispatch('unsetAuthUser').then(res => {
+        jwt.removeToken()
+      })
+    },
     getUserInfo ({ commit }) {
       return user.getUserInfo().then(res => {
         jwt.setName(res.data.name)
         commit(types.GET_USER_INFO, res.data)
+      })
+    },
+    unsetAuthUser ({ commit }) {
+      return user.logout().then(res => {
+        commit(types.UNSET_USER_INFO)
       })
     }
   }

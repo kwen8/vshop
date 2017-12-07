@@ -17,39 +17,38 @@
 </template>
 
 <script>
-import SideMenu from './SideMenu'
-import TopHeader from './TopHeader'
-import { mapState } from 'vuex'
-export default {
+  import SideMenu from './SideMenu'
+  import TopHeader from './TopHeader'
+  import {mapState} from 'vuex'
 
-  name: 'Layout',
-
-  components: {
-    TopHeader,
-    SideMenu
-  },
-  data () {
-    return {
-
-    }
-  },
-  created () {
-    this.$store.dispatch('getUserInfo').catch(err => {
-      console.log(err)
-      this.$router.push({
-        name: 'login'
+  export default {
+    name: 'Layout',
+    components: {
+      TopHeader,
+      SideMenu
+    },
+    data () {
+      return {}
+    },
+    beforeCreate () {
+      this.$store.dispatch('getUserInfo').catch(() => {
+        this.$message({
+          message: '用户登录已超时',
+          type: 'error',
+          duration: 1000
+        })
+        this.$router.push({ name: 'login' })
       })
-    })
-  },
-  computed: {
-    ...mapState({
-      backgroundColor: state => state.app.backgroundColor,
-      textColor: state => state.app.textColor,
-      activeTextColor: state => state.app.activeTextColor,
-      collapse: state => state.app.collapse
-    })
+    },
+    computed: {
+      ...mapState({
+        backgroundColor: state => state.app.backgroundColor,
+        textColor: state => state.app.textColor,
+        activeTextColor: state => state.app.activeTextColor,
+        collapse: state => state.app.collapse
+      })
+    }
   }
-}
 </script>
 
 <style lang="scss">
