@@ -1,6 +1,32 @@
+.el-submenu .el-menu-item {
+  min-width: 199px;
+}
 .layout {
   height: 100%;
+  .top-header {
+    width: 100%;
+    position: fixed;
+    &-title {
+      box-sizing: border-box;
+      width: 200px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 20px;
+      border-right: 1px solid #e6e6e6;
+      text-align: center;
+    }
+    .toggle-side-bar {
+      cursor: pointer;
+      padding-left: 20px;
+      width: 15px;
+      padding-right: 20px;
+      line-height: 60px;
+    }
+  }
   &-side {
+    position: fixed;
+    top: 60px;
+    left: 0;
     width: 200px;
     height: 100%;
     .side-menu {

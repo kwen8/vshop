@@ -10,7 +10,6 @@ export const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to)
   if (to.name !== 'login') {
     if (Store.state.user.authenticated === true || jwt.getToken()) {
       return next()

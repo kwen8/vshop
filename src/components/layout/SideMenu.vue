@@ -3,7 +3,10 @@
     default-active="2"
     class="side-menu"
     @open="handleOpen"
-    @close="handleClose">
+    @close="handleClose"
+    :background-color="backgroundColor"
+    :text-color="textColor"
+    :active-text-color="activeTextColor">
     <el-submenu index="1">
       <template slot="title">
         <i class="el-icon-location"></i>
@@ -37,11 +40,19 @@
 export default {
 
   name: 'SideMenu',
-
-  data () {
-    return {
-
+  props: {
+    backgroundColor: {
+      type: String
+    },
+    textColor: {
+      type: String
+    },
+    activeTextColor: {
+      type: String
     }
+  },
+  data () {
+    return {}
   },
   methods: {
     handleOpen (key, keyPath) {
