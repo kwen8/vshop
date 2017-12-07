@@ -1,12 +1,14 @@
 <template>
   <el-menu
-    default-active="2"
+    default-active="1-1"
     class="side-menu"
     @open="handleOpen"
     @close="handleClose"
     :background-color="backgroundColor"
     :text-color="textColor"
-    :active-text-color="activeTextColor">
+    :active-text-color="activeTextColor"
+    :collapse="collapse"
+    router="true">
     <el-submenu index="1">
       <template slot="title">
         <i class="el-icon-location"></i>
@@ -49,6 +51,9 @@ export default {
     },
     activeTextColor: {
       type: String
+    },
+    collapse: {
+      type: Boolean
     }
   },
   data () {

@@ -17,6 +17,10 @@ router.beforeEach((to, from, next) => {
       return next({ name: 'login' })
     }
   } else {
-    next()
+    if (Store.state.user.authenticated === true || jwt.getToken()) {
+      return next({ name: 'home' })
+    } else {
+      next()
+    }
   }
 })

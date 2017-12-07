@@ -7,8 +7,8 @@
     width: 100%;
     position: fixed;
     &-title {
-      box-sizing: border-box;
-      width: 200px;
+      transition: width .3s linear;
+      box-sizing: content-box;
       height: 60px;
       line-height: 60px;
       font-size: 20px;
@@ -27,10 +27,12 @@
     position: fixed;
     top: 60px;
     left: 0;
-    width: 200px;
     height: 100%;
     .side-menu {
       height: 100%;
+      &:not(.el-menu--collapse) {
+        width: 200px;
+      }
     }
   }
 }

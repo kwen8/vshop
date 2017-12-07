@@ -3,12 +3,14 @@
     <top-header
       :backgroundColor="backgroundColor"
       :textColor="textColor"
+      :collapse="collapse"
     ></top-header>
     <div class="layout-side">
       <side-menu
         :backgroundColor="backgroundColor"
         :textColor="textColor"
         :activeTextColor="activeTextColor"
+        :collapse="collapse"
       ></side-menu>
     </div>
   </div>
@@ -32,13 +34,19 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('getUserInfo')
+    this.$store.dispatch('getUserInfo').catch(err => {
+      console.log(err)
+      this.$router.push({
+        name: 'login'
+      })
+    })
   },
   computed: {
     ...mapState({
       backgroundColor: state => state.app.backgroundColor,
       textColor: state => state.app.textColor,
-      activeTextColor: state => state.app.activeTextColor
+      activeTextColor: state => state.app.activeTextColor,
+      collapse: state => state.app.collapse
     })
   }
 }
