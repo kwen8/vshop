@@ -8,6 +8,7 @@
     <div class="main">
       <div class="layout-side">
         <side-menu
+          :current-routes="currentRoutes.path"
           :background-color="backgroundColor"
           :text-color="textColor"
           :active-text-color="activeTextColor"
@@ -16,6 +17,14 @@
         ></side-menu>
       </div>
       <div class="content">
+        <div class="breadcrumb">
+          <el-breadcrumb separator-class="el-icon-arrow-right">
+            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+            <el-breadcrumb-item v-for="(breadcrumb, index) in currentRoutes.matched" :key="index">
+              {{ breadcrumb.meta.title }}
+            </el-breadcrumb-item>
+          </el-breadcrumb>
+        </div>
         <transition name="fade" mode="out-in">
           <router-view></router-view>
         </transition>
@@ -39,7 +48,7 @@
       return {}
     },
     created () {
-      this.$store.dispatch('getUserInfo').catch(res => {
+      this.$store.dispatch('getUserInfo').catch(e => {
         this.$router.push({name: 'login'})
       })
     },
@@ -52,6 +61,9 @@
       }),
       menuList () {
         return appRoutes
+      },
+      currentRoutes () {
+        return this.$router.currentRoute
       }
     }
   }
