@@ -11,9 +11,5 @@ export default {
 
   removeToken () {
     Cookies.remove('jwtToken')
-  },
-
-  setName (name) {
-    Cookies.set('admin', name)
   }
 }

@@ -42,7 +42,9 @@
         this.$store.commit('TOGGLE_SIDE_MENU')
       },
       logout () {
-        this.$store.dispatch('logout')
+        this.$store.dispatch('logout').then(res => {
+          this.$router.push({ name: 'login' })
+        })
       }
     },
     computed: {

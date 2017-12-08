@@ -8,5 +8,8 @@ export default {
   },
   getUserInfo () {
     return axios.get('/api/admin')
+  },
+  refresh () {
+    return axios.post('/api/refresh')
   }
 }

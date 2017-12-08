@@ -5,13 +5,20 @@
       :textColor="textColor"
       :collapse="collapse"
     ></top-header>
-    <div class="layout-side">
-      <side-menu
-        :backgroundColor="backgroundColor"
-        :textColor="textColor"
-        :activeTextColor="activeTextColor"
-        :collapse="collapse"
-      ></side-menu>
+    <div class="main">
+      <div class="layout-side">
+        <side-menu
+          :backgroundColor="backgroundColor"
+          :textColor="textColor"
+          :activeTextColor="activeTextColor"
+          :collapse="collapse"
+        ></side-menu>
+      </div>
+      <div class="content">
+        <transition name="fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -30,15 +37,8 @@
     data () {
       return {}
     },
-    beforeCreate () {
-      this.$store.dispatch('getUserInfo').catch(() => {
-        this.$message({
-          message: '用户登录已超时',
-          type: 'error',
-          duration: 1000
-        })
-        this.$router.push({ name: 'login' })
-      })
+    created () {
+      this.$store.dispatch('getUserInfo')
     },
     computed: {
       ...mapState({

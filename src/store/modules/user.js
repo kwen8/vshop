@@ -27,18 +27,25 @@ export default {
       })
     },
     logout ({ dispatch }) {
-      return dispatch('unsetAuthUser').then(res => {
+      return user.logout().then(res => {
         jwt.removeToken()
+        dispatch('unsetAuthUser')
       })
     },
-    getUserInfo ({ commit }) {
+    getUserInfo ({ commit, dispatch }) {
       return user.getUserInfo().then(res => {
-        jwt.setName(res.data.name)
         commit(types.GET_USER_INFO, res.data)
+      }).catch(e => {
+        dispatch('refreshToken')
       })
     },
     unsetAuthUser ({ commit }) {
-      return user.logout().then(res => {
+      commit(types.UNSET_USER_INFO)
+    },
+    refreshToken ({ commit }) {
+      return user.refresh().then(res => {
+        commit(types.GET_USER_INFO, res.data)
+      }).catch(e => {
         commit(types.UNSET_USER_INFO)
       })
     }

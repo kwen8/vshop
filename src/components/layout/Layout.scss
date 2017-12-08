@@ -44,16 +44,23 @@
       }
     }
   }
-  &-side {
-    position: fixed;
-    top: 60px;
-    left: 0;
+  .main {
     height: 100%;
-    .side-menu {
+    box-sizing: border-box;
+    padding-top: 60px;
+    display: flex;
+    .layout-side {
       height: 100%;
-      &:not(.el-menu--collapse) {
-        width: 200px;
+      .side-menu {
+        height: 100%;
+        &:not(.el-menu--collapse) {
+          width: 200px;
+        }
       }
+    }
+    .content {
+      flex: 1;
+      height: 100%;
     }
   }
 }
