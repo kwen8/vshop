@@ -8,10 +8,11 @@
     <div class="main">
       <div class="layout-side">
         <side-menu
-          :backgroundColor="backgroundColor"
-          :textColor="textColor"
-          :activeTextColor="activeTextColor"
+          :background-color="backgroundColor"
+          :text-color="textColor"
+          :active-text-color="activeTextColor"
           :collapse="collapse"
+          :menu-list="menuList"
         ></side-menu>
       </div>
       <div class="content">
@@ -27,7 +28,7 @@
   import SideMenu from './SideMenu'
   import TopHeader from './TopHeader'
   import {mapState} from 'vuex'
-
+  import { appRoutes } from '../../router/router'
   export default {
     name: 'Layout',
     components: {
@@ -46,7 +47,10 @@
         textColor: state => state.app.textColor,
         activeTextColor: state => state.app.activeTextColor,
         collapse: state => state.app.collapse
-      })
+      }),
+      menuList () {
+        return appRoutes
+      }
     }
   }
 </script>
