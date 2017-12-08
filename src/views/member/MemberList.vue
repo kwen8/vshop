@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <el-card>
-      sdajfljsad
-    </el-card>
-  </div>
+  <el-card>
+    <div style="height: 1000px;"></div>
+  </el-card>
 </template>
 
 <script>
@@ -13,8 +11,7 @@
         msg: 'hello vue'
       }
     },
-    components: {
-    }
+    components: {}
   }
 </script>
 

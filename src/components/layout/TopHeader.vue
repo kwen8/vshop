@@ -1,14 +1,14 @@
 <template>
   <el-row class="top-header" :style="{background: backgroundColor, color: textColor}">
     <el-col class="top-header-title" :style="{width: collapse?'64px':'200px'}">
-      {{ collapse?'K' : 'admin' }}
+      <router-link to="/" tag="div">{{ collapse?'K' : 'admin' }}</router-link>
     </el-col>
-    <el-col :span="10">
+    <el-col class="top-header-collapse">
       <div class="toggle-side-bar" @click="toggleSideBar">
         <i class="el-icon-menu"></i>
       </div>
     </el-col>
-    <el-col :span="4" class="top-header-user">
+    <el-col class="top-header-user">
       <el-dropdown trigger="hover" :style="{color: textColor}">
         <span class="el-dropdown-link user-inner">
           <span class="user-name">{{ name }}</span>

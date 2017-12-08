@@ -16,7 +16,7 @@
           :menu-list="menuList"
         ></side-menu>
       </div>
-      <div class="content">
+      <div class="content" :style="{marginLeft: collapse?'60px':'200px'}">
         <div class="breadcrumb">
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
