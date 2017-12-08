@@ -39,7 +39,9 @@
       return {}
     },
     created () {
-      this.$store.dispatch('getUserInfo')
+      this.$store.dispatch('getUserInfo').catch(res => {
+        this.$router.push({name: 'login'})
+      })
     },
     computed: {
       ...mapState({
