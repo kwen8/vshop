@@ -1,6 +1,6 @@
 <template>
   <el-row type="flex" justify="center" align="middle" class="login-page">
-    <el-col :span="6">
+    <el-col :xs="20" :sm="12" :md="10" :lg="6">
       <el-card class="loginForm">
         <div slot="header" class="clearfix">
           <span>登录</span>
@@ -66,12 +66,12 @@ export default {
             password: this[formName].password
           }
           this.$store.dispatch('login', data).then(res => {
-            this.$router.push({
-              name: 'home'
-            })
+            this.$router.push({ name: 'home' })
+          }).catch((e) => {
+            this.$message.error(e.response.data.message)
           })
         } else {
-          console.log('error submit!!')
+          this.$message.error('请完整填写表单')
           return false
         }
       })
