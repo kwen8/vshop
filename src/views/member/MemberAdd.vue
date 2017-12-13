@@ -2,7 +2,7 @@
   <el-card>
     <el-row>
       <el-col  :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
-        <MemberInfoForm :buttonText="buttonText"></MemberInfoForm>
+        <MemberInfoForm :buttonText="buttonText" :formAction="formAction"></MemberInfoForm>
       </el-col>
     </el-row>
   </el-card>
@@ -17,6 +17,7 @@
     data () {
       return {
         buttonText: '立即创建',
+        formAction: '/test',
         msg: 'hello vue'
       }
     }
