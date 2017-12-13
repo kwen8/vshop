@@ -1,7 +1,12 @@
 import axios from '../helpers/fetch'
 
 export default {
-  getMemberList () {
-    return axios.get('/api/users')
+  getMemberList (page) {
+    page = page || 1
+    return axios.get('/api/users?', {
+      params: {
+        page
+      }
+    })
   }
 }

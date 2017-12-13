@@ -2,11 +2,12 @@
   min-width: 199px;
 }
 .layout {
+  width: 100%;
   height: 100%;
   .top-header {
     width: 100%;
     position: fixed;
-    z-index: 999;
+    z-index: 10001;
     &-collapse {
       float: left;
       width: 55px;
@@ -51,6 +52,7 @@
     }
   }
   .main {
+    width: 100%;
     height: 100%;
     box-sizing: border-box;
     padding-top: 60px;
@@ -58,6 +60,7 @@
     .layout-side {
       position: fixed;
       height: 100%;
+      z-index: 10001;
       .side-menu {
         height: 100%;
         &:not(.el-menu--collapse) {
@@ -70,6 +73,7 @@
       box-sizing: border-box;
       flex: 1;
       height: 100%;
+      width: calc(100% - 200px);
       padding: 10px;
       .breadcrumb {
         padding: 10px 5px 20px;
