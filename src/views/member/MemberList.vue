@@ -1,28 +1,15 @@
 <template>
-  <el-card>
+  <el-card class="member-list-container">
     <el-table
-      :data="tableData"
+      :data="memberData"
       border
       style="width: 100%">
-      <el-table-column
-        prop="date"
-        label="日期"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
+      <member-list-table-item></member-list-table-item>
     </el-table>
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page="currentPage4"
+      :current-page="currentPage"
       :page-sizes="[100, 200, 300, 400]"
       :page-size="100"
       layout="total, sizes, prev, pager, next, jumper"
@@ -33,20 +20,43 @@
 
 <script>
   import member from '../../api/member'
+  import MemberListTableItem from '../../components/member/MemberListTableItem'
   export default {
+    components: {
+      MemberListTableItem
+    },
     data () {
       return {
-        msg: 'hello vue'
+        msg: 'hello vue',
+        memberData: [],
+        pagination: {}
       }
     },
     created () {
       member.getMemberList().then(res => {
         console.log(res.data)
+        this.pagination = res.data.meta
+        this.memberData = res.data.data
       })
+    },
+    methods: {
+      handleSizeChange () {
+        console.log(123)
+      },
+      handleCurrentChange () {
+        console.log(456)
+      }
+    },
+    computed: {
+      currentPage () {
+        return this.pagination.current_page
+      }
     }
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
+  .member-list-container {
 
+  }
 </style>
