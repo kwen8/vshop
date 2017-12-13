@@ -6,6 +6,7 @@
     :text-color="textColor"
     :active-text-color="activeTextColor"
     :collapse="collapse"
+    @select="changeRoute"
     router>
     <el-submenu v-for="menu in menuList" :key="menu.name" :index="menu.path">
       <template slot="title">
@@ -21,6 +22,8 @@
 </template>
 
 <script>
+  import * as types from '../../store/mutation-types'
+
   export default {
     props: {
       backgroundColor: {
@@ -44,6 +47,14 @@
     },
     data () {
       return {}
+    },
+    methods: {
+      // ...mapMutations({
+      //   changeRoute: [types.CHANGE_ROUTE]
+      // })
+      changeRoute (currentRoute) {
+        this.$store.commit(types.CHANGE_ROUTE, currentRoute)
+      }
     }
   }
 </script>
