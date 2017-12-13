@@ -84,7 +84,6 @@
     created () {
       member.getMemberList().then(res => {
         this.loading = false
-        console.log(res)
         this.pagination = res.data.meta
         this.memberData = res.data.data
       })
