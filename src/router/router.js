@@ -19,13 +19,17 @@ export const appRoutes = [
     path: '/member',
     icon: 'el-icon-edit',
     name: 'member',
-    title: '会员管理',
+    meta: {
+      title: '会员管理'
+    },
     component: Layout,
     children: [
       {
         path: 'list',
         icon: 'el-icon-tickets',
-        title: '会员管理',
+        meta: {
+          title: '会员管理'
+        },
         name: 'member_list',
         component: resolve => {
           require(['@/views/member/MemberList.vue'], resolve)
@@ -34,7 +38,9 @@ export const appRoutes = [
       {
         path: 'add',
         icon: 'el-icon-circle-plus-outline',
-        title: '添加会员',
+        meta: {
+          title: '添加会员'
+        },
         name: 'member_add',
         component: resolve => {
           require(['@/views/member/MemberAdd.vue'], resolve)

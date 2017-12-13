@@ -1,7 +1,7 @@
 <template>
-  <div>
-    memberList page
-  </div>
+  <el-card>
+    <div style="height: 1000px;"></div>
+  </el-card>
 </template>
 
 <script>
@@ -11,8 +11,7 @@
         msg: 'hello vue'
       }
     },
-    components: {
-    }
+    components: {}
   }
 </script>
 

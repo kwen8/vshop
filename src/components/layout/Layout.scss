@@ -6,6 +6,10 @@
   .top-header {
     width: 100%;
     position: fixed;
+    &-collapse {
+      float: left;
+      width: 55px;
+    }
     &-title {
       transition: width .3s ease-in-out;
       box-sizing: content-box;
@@ -23,6 +27,7 @@
       line-height: 60px;
     }
     &-user {
+      width: 200px;
       text-align: right;
       padding-right: 35px;
       float: right;
@@ -50,6 +55,7 @@
     padding-top: 60px;
     display: flex;
     .layout-side {
+      position: fixed;
       height: 100%;
       .side-menu {
         height: 100%;
@@ -59,10 +65,14 @@
       }
     }
     .content {
+      transition: .3s ease-in-out;
       box-sizing: border-box;
       flex: 1;
       height: 100%;
       padding: 10px;
+      .breadcrumb {
+        padding: 10px 5px 20px;
+      }
     }
   }
 }

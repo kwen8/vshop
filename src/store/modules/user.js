@@ -36,7 +36,7 @@ export default {
       return user.getUserInfo().then(res => {
         commit(types.GET_USER_INFO, res.data)
       }).catch(e => {
-        dispatch('refreshToken')
+        return dispatch('refreshToken')
       })
     },
     unsetAuthUser ({ commit }) {
@@ -44,9 +44,11 @@ export default {
     },
     refreshToken ({ commit }) {
       return user.refresh().then(res => {
+        jwt.setToken(res.headers.authorization.split(' ').pop())
         commit(types.GET_USER_INFO, res.data)
       }).catch(e => {
         commit(types.UNSET_USER_INFO)
+        throw new Error()
       })
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    :default-active="currentRoute"
+    :default-active="currentRoutes"
     class="side-menu"
     :background-color="backgroundColor"
     :text-color="textColor"
@@ -10,11 +10,11 @@
     <el-submenu v-for="menu in menuList" :key="menu.name" :index="menu.path">
       <template slot="title">
         <i :class="menu.icon"></i>
-        <span slot="title">{{ menu.title }}</span>
+        <span slot="title">{{ menu.meta.title }}</span>
       </template>
       <el-menu-item v-for="subMenu in menu.children" :key="subMenu.name" :index="`${menu.path}/${subMenu.path}`">
         <i :class="subMenu.icon"></i>
-        {{ subMenu.title }}
+        {{ subMenu.meta.title }}
       </el-menu-item>
     </el-submenu>
   </el-menu>
@@ -37,15 +37,13 @@
       },
       menuList: {
         type: Array
+      },
+      currentRoutes: {
+        type: String
       }
     },
     data () {
       return {}
-    },
-    computed: {
-      currentRoute () {
-        return this.$router.currentRoute.path
-      }
     }
   }
 </script>
