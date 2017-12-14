@@ -22,14 +22,28 @@
           <el-radio label="女"></el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="身份证号码">
+      <el-form-item label="身份证号码" v-model="form.idCardNum">
         <el-input type=""></el-input>
       </el-form-item>
-      <el-form-item label="身份证正面">
-        <el-input type=""></el-input>
+      <el-form-item label="身份证正面" v-model="form.idCardFront">
+        <el-upload
+          class="upload-demo"
+          action="https://jsonplaceholder.typicode.com/posts/"
+          :limit="1"
+          :auto-upload="false" >
+          <el-button size="small" type="primary">点击上传</el-button>
+          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+        </el-upload>
       </el-form-item>
-      <el-form-item label="身份证反面">
-        <el-input type=""></el-input>
+      <el-form-item label="身份证反面" v-model="form.idCardBack">
+        <el-upload
+          class="upload-demo"
+          action="https://jsonplaceholder.typicode.com/posts/"
+          :limit="1"
+          :auto-upload="false" >
+          <el-button size="small" type="primary">点击上传</el-button>
+          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+        </el-upload>
       </el-form-item>
       <el-form-item label="收货地址">
         <el-row>
@@ -54,13 +68,13 @@
         </el-row>
       </el-form-item>
       <el-form-item label="详细地址">
-        <el-input placeholder="填写详细地址"></el-input>
+        <el-input placeholder="填写详细地址" v-model="form.address"></el-input>
       </el-form-item>
       <el-form-item label="审核状态">
         <el-select  placeholder="请选择" v-model="form.status">
-          <el-option label="审核成功" value="shanghai"></el-option>
-          <el-option label="审核失败" value="beijing"></el-option>
-          <el-option label="未审核" value="beijing"></el-option>
+          <el-option label="审核成功" value="0"></el-option>
+          <el-option label="审核失败" value="1"></el-option>
+          <el-option label="未审核" value="2"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
