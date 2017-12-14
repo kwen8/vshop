@@ -1,7 +1,9 @@
 import axios from 'axios'
 import jwt from './jwt'
 
-axios.defaults.baseURL = 'http://shop-api.dev'
+const baseURL = process.env.NODE_ENV === 'development' ? 'http://shop-api.dev' : 'http://shop.chenkewen.cn'
+
+axios.defaults.baseURL = baseURL
 
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
