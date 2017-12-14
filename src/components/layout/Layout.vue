@@ -49,11 +49,6 @@
         currentRoutes: this.$router.currentRoute
       }
     },
-    created () {
-      this.$store.dispatch('getUserInfo').catch(e => {
-        this.$router.push({ name: 'login' })
-      })
-    },
     watch: {
       '$route' (to) {
         this.currentRoutes = to

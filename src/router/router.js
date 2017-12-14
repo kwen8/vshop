@@ -45,6 +45,17 @@ export const appRoutes = [
         component: resolve => {
           require(['@/views/member/MemberAdd.vue'], resolve)
         }
+      },
+      {
+        path: ':id/edit',
+        meta: {
+          title: '会员编辑',
+          isHide: true
+        },
+        name: 'member_list_edit',
+        component: resolve => {
+          require(['@/views/member/MemberEdit.vue'], resolve)
+        }
       }
     ]
   }

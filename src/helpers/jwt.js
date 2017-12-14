@@ -5,8 +5,9 @@ export default {
     return Cookies.get('jwtToken')
   },
 
-  setToken (token) {
-    Cookies.set('jwtToken', token)
+  setToken (token, data) {
+    data = data || { expires: 1 / 24 }
+    Cookies.set('jwtToken', token, data)
   },
 
   removeToken () {

@@ -17,14 +17,15 @@ export default {
     }
   },
   actions: {
-    login ({ dispatch, commit }, data) {
+    login ({ dispatch }, data) {
       return user.login(data).then(res => {
         const token = res.data.access_token
-        if (token) {
-          jwt.setToken(token)
-        }
-        return dispatch('getUserInfo')
+        dispatch('loginSuccess', token)
       })
+    },
+    loginSuccess ({ dispatch }, token) {
+      jwt.setToken(token)
+      dispatch('getUserInfo')
     },
     logout ({ dispatch }) {
       return user.logout().then(res => {
@@ -36,19 +37,18 @@ export default {
       return user.getUserInfo().then(res => {
         commit(types.GET_USER_INFO, res.data)
       }).catch(e => {
-        return dispatch('refreshToken')
+        dispatch('refreshToken')
       })
     },
     unsetAuthUser ({ commit }) {
       commit(types.UNSET_USER_INFO)
     },
-    refreshToken ({ commit }) {
+    refreshToken ({ commit, dispatch }) {
       return user.refresh().then(res => {
-        jwt.setToken(res.headers.authorization.split(' ').pop())
-        commit(types.GET_USER_INFO, res.data)
+        dispatch('loginSuccess', res.headers.authorization.split(' ').pop())
       }).catch(e => {
+        jwt.removeToken()
         commit(types.UNSET_USER_INFO)
-        throw new Error()
       })
     }
   }

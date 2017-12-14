@@ -7,8 +7,15 @@
 </template>
 
 <script>
+  import jwt from './helpers/jwt'
   export default {
-    name: 'app'
+    created () {
+      if (jwt.getToken()) {
+        this.$store.dispatch('getUserInfo')
+      } else {
+        this.$router.push({ name: 'login' })
+      }
+    }
   }
 </script>
 
