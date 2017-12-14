@@ -20,7 +20,7 @@
         <div class="breadcrumb">
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item v-for="(breadcrumb, index) in currentRoutes.matched" :key="index">
+            <el-breadcrumb-item v-for="(breadcrumb, index) in currentRoutes.matched" :key="index" :to="{ path: breadcrumb.path }">
               {{ breadcrumb.meta.title }}
             </el-breadcrumb-item>
           </el-breadcrumb>
@@ -45,12 +45,19 @@
       SideMenu
     },
     data () {
-      return {}
+      return {
+        currentRoutes: this.$router.currentRoute
+      }
     },
     created () {
       this.$store.dispatch('getUserInfo').catch(e => {
-        this.$router.push({name: 'login'})
+        this.$router.push({ name: 'login' })
       })
+    },
+    watch: {
+      '$route' (to) {
+        this.currentRoutes = to
+      }
     },
     computed: {
       ...mapState({
@@ -61,9 +68,6 @@
       }),
       menuList () {
         return appRoutes
-      },
-      currentRoutes () {
-        return this.$router.currentRoute
       }
     }
   }

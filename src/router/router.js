@@ -28,7 +28,7 @@ export const appRoutes = [
         path: 'list',
         icon: 'el-icon-tickets',
         meta: {
-          title: '会员管理'
+          title: '会员列表'
         },
         name: 'member_list',
         component: resolve => {

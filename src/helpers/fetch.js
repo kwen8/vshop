@@ -1,5 +1,6 @@
 import axios from 'axios'
 import jwt from './jwt'
+
 axios.defaults.baseURL = 'http://shop-api.dev'
 
 // Add a request interceptor
