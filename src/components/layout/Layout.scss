@@ -66,6 +66,13 @@
         &:not(.el-menu--collapse) {
           width: 200px;
         }
+        .el-submenu [class^=fa]{
+          vertical-align: middle;
+          margin-right: 5px;
+          width: 24px;
+          text-align: center;
+          font-size: 18px;
+        }
       }
     }
     .content {
