@@ -8,5 +8,12 @@ export default {
         page
       }
     })
+  },
+  addMember (member) {
+    return axios.post('/api/users?', {
+      params: {
+        member
+      }
+    })
   }
 }

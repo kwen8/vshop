@@ -1,7 +1,7 @@
 <template>
   <el-card>
     <el-row>
-      <el-col  :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+        <el-col  :xs="24" :sm="22" :md="16" :lg="12" :xl="12">
         <MemberInfoForm :buttonText="buttonText" :formAction="formAction"></MemberInfoForm>
       </el-col>
     </el-row>
