@@ -58,6 +58,28 @@ export const appRoutes = [
         }
       }
     ]
+  },
+  {
+    path: '/goods',
+    icon: 'el-icon-goods',
+    name: 'goods',
+    meta: {
+      title: '商品管理'
+    },
+    component: Layout,
+    children: [
+      {
+        path: 'list',
+        icon: 'el-icon-tickets',
+        meta: {
+          title: '商品列表'
+        },
+        name: 'goods_list',
+        component: resolve => {
+          require(['@/views/goods/GoodsList.vue'], resolve)
+        }
+      }
+    ]
   }
 ]
 

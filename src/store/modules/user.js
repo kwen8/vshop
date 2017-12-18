@@ -4,12 +4,14 @@ import * as types from '../mutation-types'
 export default {
   state: {
     name: '',
+    email: '',
     authenticated: false
   },
   mutations: {
-    [types.GET_USER_INFO] (state, { name }) {
+    [types.GET_USER_INFO] (state, { name, email }) {
       state.authenticated = true
       state.name = name
+      state.email = email
     },
     [types.UNSET_USER_INFO] (state) {
       state.authenticated = false

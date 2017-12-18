@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import gravatar from 'gravatar'
   export default {
     props: {
       backgroundColor: {
@@ -51,8 +52,11 @@
       name () {
         return this.$store.state.user.name
       },
+      email () {
+        return this.$store.state.user.email
+      },
       sysUserAvatar () {
-        return require('../../assets/user/default-avatar.jpg')
+        return gravatar.url(this.email)
       }
     }
   }
