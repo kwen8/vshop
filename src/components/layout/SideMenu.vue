@@ -9,11 +9,11 @@
     router>
     <el-submenu v-for="menu in menuList" :key="menu.name" :index="menu.path">
       <template slot="title">
-        <i :class="menu.icon"></i>
+        <i :class="menu.icon" aria-hidden="true"></i>
         <span slot="title">{{ menu.meta.title }}</span>
       </template>
       <el-menu-item v-for="subMenu in menu.children" v-if="!subMenu.meta.isHide" :key="subMenu.name" :index="`${menu.path}/${subMenu.path}`">
-        <i :class="subMenu.icon"></i>
+        <i :class="subMenu.icon" aria-hidden="true"></i>
         {{ subMenu.meta.title }}
       </el-menu-item>
     </el-submenu>

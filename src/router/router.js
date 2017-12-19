@@ -60,6 +60,28 @@ export const appRoutes = [
     ]
   },
   {
+    path: '/permission',
+    icon: 'fa fa-user-o',
+    name: 'permission',
+    meta: {
+      title: '权限管理'
+    },
+    component: Layout,
+    children: [
+      {
+        path: 'admin_list',
+        icon: 'fa fa-address-card-o',
+        meta: {
+          title: '管理员列表'
+        },
+        name: 'admin_list',
+        component: resolve => {
+          require(['@/views/permission/AdminList.vue'], resolve)
+        }
+      }
+    ]
+  },
+  {
     path: '/goods',
     icon: 'el-icon-goods',
     name: 'goods',
