@@ -1,7 +1,7 @@
 <template>
   <el-row class="top-header" :style="{background: backgroundColor, color: textColor}">
     <el-col class="top-header-title" :style="{width: collapse?'64px':'200px'}">
-      <router-link to="/" tag="div">{{ collapse?'K' : 'admin' }}</router-link>
+      <router-link to="/" tag="div">{{ collapse?name.slice(0,1) : name }}</router-link>
     </el-col>
     <el-col class="top-header-collapse">
       <div class="toggle-side-bar" @click="toggleSideBar">

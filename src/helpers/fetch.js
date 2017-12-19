@@ -37,7 +37,7 @@ axios.interceptors.response.use(
   error => {
     Message({
       type: 'error',
-      message: '登录失败'
+      message: error.response.data.message
     })
     if (error.response) {
       switch (error.response.status) {
