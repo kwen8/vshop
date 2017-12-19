@@ -86,6 +86,7 @@
         this.loading = false
         this.pagination = res.data.meta
         this.memberData = res.data.data
+        console.log(res.data)
       })
     },
     methods: {
