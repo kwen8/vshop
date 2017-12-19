@@ -10,10 +10,6 @@ export default {
     })
   },
   addMember (member) {
-    return axios.post('/api/users?', {
-      params: {
-        member
-      }
-    })
+    return axios.post('/api/users?', member)
   }
 }
