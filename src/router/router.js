@@ -78,6 +78,18 @@ export const appRoutes = [
         component: resolve => {
           require(['@/views/permission/AdminList.vue'], resolve)
         }
+      },
+      {
+        path: 'allocate_permission',
+        icon: 'fa fa-address-card-o',
+        meta: {
+          title: '派发权限',
+          isHide: true
+        },
+        name: 'allocate_permission',
+        component: resolve => {
+          require(['@/views/permission/AllocatePermission.vue'], resolve)
+        }
       }
     ]
   },

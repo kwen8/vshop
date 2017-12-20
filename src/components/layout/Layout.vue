@@ -26,9 +26,7 @@
           </el-breadcrumb>
         </div>
         <transition name="el-fade-in-linear">
-          <keep-alive>
-            <router-view></router-view>
-          </keep-alive>
+          <router-view></router-view>
         </transition>
       </div>
     </div>

@@ -48,6 +48,7 @@ axios.interceptors.response.use(
             path: 'login',
             query: {redirect: router.currentRoute.fullPath}
           })
+          break
       }
     }
   })

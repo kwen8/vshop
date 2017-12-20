@@ -28,15 +28,15 @@
       label="最后登录时间"
       width="150">
     </el-table-column>
-    <el-table-column label="操作" width="150" fixed="right">
+    <el-table-column label="操作">
       <template slot-scope="scope">
         <el-button
           size="mini"
-          @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+          @click="allocatePermission(scope.$index, scope.row)">分派权限</el-button>
         <el-button
           size="mini"
           type="danger"
-          @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+          @click="adminDelete(scope.$index, scope.row)">删除</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -55,6 +55,16 @@
       admin.getAdminList().then(res => {
         this.adminList = res.data.data
       })
+    },
+    methods: {
+      allocatePermission (i, admin) {
+        this.$router.push({
+          name: 'allocate_permission',
+          query: {
+            id: admin.id
+          }
+        })
+      }
     }
   }
 </script>
