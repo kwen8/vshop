@@ -21,6 +21,17 @@
         </el-dropdown-menu>
       </el-dropdown>
     </el-col>
+    <el-col class="top-header-language">
+      <el-dropdown :style="{color: textColor}">
+        <span class="el-dropdown-link language-inner">
+          {{ $t(`system.${language}`) }}<i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>中文</el-dropdown-item>
+          <el-dropdown-item>English</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </el-col>
   </el-row>
 </template>
 
@@ -46,6 +57,9 @@
         this.$store.dispatch('logout').then(res => {
           this.$router.push({ name: 'login' })
         })
+      },
+      toggleLanguage () {
+        this.$i18n.locale = 'EN'
       }
     },
     computed: {
@@ -57,6 +71,9 @@
       },
       sysUserAvatar () {
         return gravatar.url(this.email)
+      },
+      language () {
+        return this.$store.state.app.language
       }
     }
   }

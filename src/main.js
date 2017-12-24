@@ -5,8 +5,9 @@ import Element from 'element-ui'
 import 'font-awesome/css/font-awesome.min.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
+import i18n from './i18n'
 import { router } from './router'
-import store from './store/'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -17,6 +18,7 @@ new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   template: '<App/>',
   components: { App }
 })

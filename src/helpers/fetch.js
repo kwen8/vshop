@@ -45,12 +45,12 @@ axios.interceptors.response.use(
           // 返回 401 清除token信息并跳转到登录页面
           store.commit(types.UNSET_USER_INFO)
           router.replace({
-            path: 'login',
-            query: {redirect: router.currentRoute.fullPath}
+            name: 'login'
           })
           break
       }
     }
+    return Promise.reject(error)
   })
 
 export default axios
